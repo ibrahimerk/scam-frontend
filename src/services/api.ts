@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { User } from '@/types';
 
-const API_URL = 'http://localhost:8000/api';
+const API_URL = "https://scam-project.onrender.com/api/token/";
 
 // Axios instance oluştur
 const axiosInstance = axios.create({
