@@ -102,11 +102,6 @@ export default function Login() {
           </CardFooter>
         </form>
       </Card>
-      <form onSubmit={handleLogin}>
-        <input value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" />
-        <input value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder="Password" />
-        <button type="submit">Login</button>
-      </form>
     </div>
 
   );
