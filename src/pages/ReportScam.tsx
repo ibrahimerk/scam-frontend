@@ -207,7 +207,7 @@ const ReportScam = () => {
             
             <div>
               <label htmlFor="amount" className="block text-sm font-medium text-gray-700 mb-1">
-                Amount Lost (Optional)
+                Amount Lost
               </label>
               <Input
                 id="amount"
