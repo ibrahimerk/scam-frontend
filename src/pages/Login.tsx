@@ -1,4 +1,6 @@
-import { useState } from 'react';
+
+import axios from "axios";
+import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
@@ -15,6 +17,23 @@ export default function Login() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        "https://scam-project.onrender.com/api/login/",
+        { username, password },
+        { withCredentials: true }
+      );
+
+      console.log("Giriş başarılı:", response.data);
+      // buraya setUser, navigate veya localStorage işlemi gelebilir
+
+    } catch (error) {
+      console.error("Giriş başarısız:", error);
+    }
+  };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -31,6 +50,7 @@ export default function Login() {
   };
 
   return (
+    
     <div className="flex items-center justify-center min-h-screen bg-background">
       <Card className="w-[350px]">
         <CardHeader>
@@ -82,6 +102,12 @@ export default function Login() {
           </CardFooter>
         </form>
       </Card>
+      <form onSubmit={handleLogin}>
+        <input value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" />
+        <input value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder="Password" />
+        <button type="submit">Login</button>
+      </form>
     </div>
+
   );
 }
